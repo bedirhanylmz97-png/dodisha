@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DODISHA — Yakında</title>
+<meta name="description" content="DODISHA — zamansız, rafine ve niş kadın giyimi. Çok yakında.">
+<meta name="theme-color" content="#F2EDE5">
+<meta property="og:title" content="DODISHA — Yakında">
+<meta property="og:description" content="Zamansız, rafine ve niş kadın giyimi. Çok yakında.">
+<meta property="og:url" content="https://dodisha.com">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231B1714'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Didot,Bodoni 72,serif' font-style='italic' font-size='40' fill='%23F2EDE5'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="image" href="img/hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bone: #F2EDE5;
+    --bone-deep: #E8E0D4;
+    --ink: #1B1714;
+    --muted: #857A6F;
+    --line: rgba(27, 23, 20, .16);
+    --oxblood: #6B2A2A;
+    --silk-1: #E6D8C4;
+    --silk-2: #C9B193;
+    --silk-3: #A88D6C;
+    --serif: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+    --sans: "Jost", "Helvetica Neue", Arial, sans-serif;
+    --gutter: clamp(16px, 4vw, 56px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { height: 100%; }
+
+  body {
+    background: var(--bone);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Film grain */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    pointer-events: none;
+    z-index: 50;
+    opacity: .09;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grain 1.2s steps(6) infinite;
+  }
+
+  @keyframes grain {
+    0%   { transform: translate(0, 0); }
+    20%  { transform: translate(-3%, 2%); }
+    40%  { transform: translate(2%, -3%); }
+    60%  { transform: translate(-2%, -1%); }
+    80%  { transform: translate(3%, 3%); }
+    100% { transform: translate(0, 0); }
+  }
+
+  .page {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0 var(--gutter);
+  }
+
+  /* ——— Top bar ——— */
+  .bar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 11px;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+  }
+  .bar .c { text-align: center; font-family: var(--serif); font-style: italic; letter-spacing: .06em; text-transform: none; font-size: 15px; }
+  .bar .r { text-align: right; }
+  .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--oxblood); margin-right: 10px; vertical-align: 1px; animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity: .25; } }
+
+  /* ——— Stage ——— */
+  .stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    padding: clamp(28px, 6vh, 72px) 0;
+  }
+
+  .arch {
+    position: relative;
+    width: clamp(200px, 26vw, 360px);
+    aspect-ratio: 3 / 4.6;
+    border-radius: 999px 999px 0 0;
+    overflow: hidden;
+    background: var(--silk-2);
+    box-shadow: 0 40px 80px -40px rgba(60, 40, 20, .45);
+    opacity: 0;
+    transform: translateY(24px) scale(.98);
+    animation: rise 1.8s cubic-bezier(.2, .7, .1, 1) .2s forwards;
+  }
+  .arch::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background:
+      radial-gradient(60% 40% at 30% 20%, rgba(255, 250, 240, .85), transparent 60%),
+      radial-gradient(50% 60% at 80% 60%, var(--silk-3), transparent 70%),
+      radial-gradient(70% 50% at 20% 85%, var(--silk-1), transparent 70%),
+      linear-gradient(160deg, var(--silk-1), var(--silk-2) 45%, var(--silk-3));
+    filter: blur(6px);
+    animation: silk 18s ease-in-out infinite alternate;
+  }
+  @keyframes silk {
+    0%   { transform: rotate(0deg) translate(0, 0) scale(1); }
+    50%  { transform: rotate(8deg) translate(4%, -3%) scale(1.06); }
+    100% { transform: rotate(-6deg) translate(-3%, 4%) scale(1.02); }
+  }
+  .arch img {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 30%;
+    transform: scale(1.08);
+    animation: settle 3.2s cubic-bezier(.2, .7, .1, 1) .2s forwards;
+  }
+  @keyframes settle { to { transform: scale(1); } }
+  .arch-frame {
+    padding: 14px 14px 0;
+    border: 1px solid transparent;
+    border-bottom: 0;
+    border-radius: 999px 999px 0 0;
+    animation: line 2s ease 1s forwards;
+  }
+  @keyframes line { to { border-color: var(--line); } }
+
+  .wordmark {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(10px, 4vh, 48px);
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(64px, 17.5vw, 290px);
+    line-height: .8;
+    letter-spacing: -.02em;
+    white-space: nowrap;
+    mix-blend-mode: multiply;
+    z-index: 3;
+  }
+  .wordmark span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40%);
+    animation: letter 1.4s cubic-bezier(.2, .7, .1, 1) forwards;
+  }
+  .wordmark span:nth-child(1) { animation-delay: .55s; }
+  .wordmark span:nth-child(2) { animation-delay: .62s; }
+  .wordmark span:nth-child(3) { animation-delay: .69s; }
+  .wordmark span:nth-child(4) { animation-delay: .76s; }
+  .wordmark span:nth-child(5) { animation-delay: .83s; }
+  .wordmark span:nth-child(6) { animation-delay: .90s; }
+  .wordmark span:nth-child(7) { animation-delay: .97s; }
+
+  .side {
+    position: absolute;
+    top: clamp(16px, 5vh, 56px);
+    width: clamp(150px, 15vw, 220px);
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--muted);
+    opacity: 0;
+    animation: fade 1.6s ease 1.4s forwards;
+  }
+  .side.l { left: 0; }
+  .side.r { right: 0; text-align: right; }
+  .side .k { display: block; margin-bottom: 10px; font-size: 10px; letter-spacing: .34em; text-transform: uppercase; color: var(--ink); }
+  .side em { font-family: var(--serif); font-size: 20px; line-height: 1.3; color: var(--ink); display: block; }
+  .side p { margin: 0; }
+  .ph {
+    margin-top: 18px;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: var(--bone-deep);
+  }
+  .ph img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.6s cubic-bezier(.2, .7, .1, 1); }
+  .side:hover .ph img { transform: scale(1.05); }
+
+  @keyframes rise   { to { opacity: 1; transform: none; } }
+  @keyframes fade   { to { opacity: 1; } }
+  @keyframes letter { to { opacity: 1; transform: none; } }
+
+  /* ——— Marquee ——— */
+  .marquee {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 14px 0;
+    margin: 0 calc(var(--gutter) * -1);
+  }
+  .marquee .track { display: inline-flex; animation: scroll 40s linear infinite; }
+  .marquee span {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    padding: 0 28px;
+  }
+  .marquee span::after { content: "✦"; font-style: normal; font-size: 9px; color: var(--oxblood); margin-left: 56px; vertical-align: 4px; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+
+  .credit { padding: 0 0 18px; text-align: center; font-size: 10px; letter-spacing: .12em; color: var(--muted); opacity: .7; }
+  .credit a { color: inherit; }
+
+  /* ——— Footer ——— */
+  .foot {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0 24px;
+    font-size: 11px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .foot .c { color: var(--ink); text-align: center; }
+  .foot .r { text-align: right; }
+
+  @media (max-width: 860px) {
+    .bar { grid-template-columns: 1fr auto; }
+    .bar .c { display: none; }
+    .stage { grid-template-columns: 1fr 1fr; gap: 0 14px; padding-bottom: 36px; }
+    .arch-frame { grid-row: 1; grid-column: 1 / -1; justify-self: center; }
+    .wordmark { position: relative; left: auto; bottom: auto; transform: none; grid-row: 2; grid-column: 1 / -1; margin-top: -.45em; }
+    .side { position: static; grid-row: 3; width: auto; margin-top: 32px; text-align: left; }
+    .side.l { grid-column: 1; }
+    .side.r { grid-column: 2; }
+    .side { display: flex; flex-direction: column; }
+    .side em, .side p { margin-bottom: 18px; }
+    .ph { margin-top: auto; }
+    .side.r { text-align: left; }
+    .side em { font-size: 17px; }
+    .side p { font-size: 12px; line-height: 1.6; }
+    .arch { width: clamp(200px, 58vw, 300px); }
+    .arch-frame { padding: 12px 12px 0; }
+    .foot { grid-template-columns: 1fr; text-align: center; gap: 8px; }
+    .foot .r { text-align: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; animation-delay: 0s !important; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="bar">
+    <div lang="en">Dodisha</div>
+    <div class="c">Koleksiyon N°01</div>
+    <div class="r"><i class="dot"></i>Yakında</div>
+  </header>
+
+  <section class="stage">
+    <div class="side l">
+      <span class="k">Atelier</span>
+      <em>Bir kadının gardırobu, onun imzasıdır.</em>
+      <div class="ph"><img src="img/ivory.jpg" alt="Krem elbiseli kadın, sade stüdyo çekimi" loading="lazy"></div>
+    </div>
+
+    <div class="arch-frame">
+      <div class="arch"><img src="img/hero.jpg" alt="Şampanya saten elbiseli kadın"></div>
+    </div>
+
+    <div class="side r">
+      <span class="k">Çok Yakında</span>
+      <p>Zamansız kesimler, özenle seçilmiş kumaşlar ve sessiz bir lüks.</p>
+      <div class="ph"><img src="img/desert.jpg" alt="Kahverengi takım ve şal ile kadın, çöl çekimi" loading="lazy"></div>
+    </div>
+
+    <h1 class="wordmark" aria-label="DODISHA"><span>D</span><span>O</span><span>D</span><span>I</span><span>S</span><span>H</span><span>A</span></h1>
+  </section>
+
+  <div>
+    <div class="marquee" aria-hidden="true">
+      <div class="track">
+        <span>Zamansız</span><span>Rafine</span><span>Kadınca</span><span>Niş</span><span>Özenle seçilmiş</span><span>Sessiz lüks</span>
+        <span>Zamansız</span><span>Rafine</span><span>Kadınca</span><span>Niş</span><span>Özenle seçilmiş</span><span>Sessiz lüks</span>
+      </div>
+    </div>
+    <footer class="foot">
+      <div>Kadın Giyim</div>
+      <div class="c" lang="en">dodisha.com</div>
+      <div class="r" lang="en">© 2026 Dodisha</div>
+    </footer>
+    <p class="credit">Görseller: <a href="https://www.freepik.com" rel="noopener">Freepik</a></p>
+  </div>
+</main>
+</body>
+</html>
